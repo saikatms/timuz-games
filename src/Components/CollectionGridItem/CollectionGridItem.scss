@@ -14,8 +14,8 @@
 
   &__img {
     width: 100vw;
-    height: auto;
-  
+    height: 35vw;
+
     @media screen and (max-width: 800px) {
       display: none;
     }
@@ -41,7 +41,7 @@
     font-size: 18px;
     text-shadow: 3px 3px 4px black;
     line-height: 25px;
-  
+
     @media screen and (max-width: 800px) {
       font-size: 15px;
       line-height: 21px;
@@ -50,7 +50,7 @@
       left: 12%;
     }
   }
-  
+
   &__tv-text {
     position: absolute;
     bottom: 41%;
@@ -61,7 +61,7 @@
     font-size: 18px;
     text-shadow: 3px 3px 4px black;
     line-height: 25px;
-  
+
     @media screen and (max-width: 800px) {
       font-size: 15px;
       line-height: 22px;
@@ -71,13 +71,13 @@
     }
   }
 
-    &__title {
-      @media screen and (max-width: 600px) {
-        font-size: 16px;
-      }
+  &__title {
+    @media screen and (max-width: 600px) {
+      font-size: 16px;
     }
+  }
 
-    &__overview {
-      color: white;
-    }
+  &__overview {
+    color: white;
+  }
 }

@@ -7,7 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { auth } from "../../Firebase/firebase.utils";
 import {
   selectCurrentUser,
-  selectToggleHidden
+  selectToggleHidden,
 } from "../../Redux/User/user-selectors";
 import { ToggleMenuHidden } from "../../Redux/User/user-actions";
 import { connect } from "react-redux";
@@ -16,25 +16,37 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavMenu from "./NavMenu";
 
-const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
+const Header = ({
+  history,
+  currentUser,
+  currentRoute,
+  hidden,
+  ToggleMenuHidden,
+}) => {
   return (
     <div className="header">
       <div className="header__logo-box" onClick={() => history.push("/movies")}>
         <img src={Logo} alt="logo" className="header__logo" />
+        <div className="header__name">
+          <h2>Prime Games</h2>
+        </div>
       </div>
 
       <div className="header__options">
         <div className="header__options-primary">
           <Link className="header__option" to="/movies">
-            Movies
+            Home
           </Link>
 
           <Link className="header__option" to="/tvshows">
-            TV Shows
+            About Us
           </Link>
 
           <Link className="header__option" to="/mylist">
-            My List
+            Faq
+          </Link>
+          <Link className="header__option" to="/mylist">
+            Contact Us
           </Link>
         </div>
 
@@ -56,9 +68,6 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
           </div>
         ) : (
           <div className="header__options-secondary">
-            <Link className="header__option" to="">
-              Hi, Guest
-            </Link>
             <Link
               className="header__option header__option--signin"
               to="/signin"
@@ -73,24 +82,21 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
         className="header__nav-menu-icon"
         onClick={ToggleMenuHidden}
       />
-      {hidden ? null : <NavMenu />}
+      {/* {hidden ? null : <NavMenu />} */}
     </div>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   currentUser: selectCurrentUser(state),
-  hidden: selectToggleHidden(state)
+  hidden: selectToggleHidden(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  ToggleMenuHidden: () => dispatch(ToggleMenuHidden())
+const mapDispatchToProps = (dispatch) => ({
+  ToggleMenuHidden: () => dispatch(ToggleMenuHidden()),
 });
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps, mapDispatchToProps)
 )(Header);

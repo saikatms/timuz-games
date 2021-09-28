@@ -19,6 +19,7 @@ class CollectionGrid extends React.Component {
 
   render() {
     const { movieGridItems, tvShowGridItems, movies, tvshow } = this.props;
+    console.log(this.props);
     return (
       <div className="collection-grid">
         <span className="collection-grid__left-arrow">
